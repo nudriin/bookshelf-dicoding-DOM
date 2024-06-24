@@ -4,6 +4,9 @@ formData.isComplete = false;
 
 let books = [];
 
+const confirmContainer = document.querySelector('#confirmContainer');
+const yes = document.querySelector('#yes');
+const no = document.querySelector('#no');
 const addBtn = document.querySelector('.add');
 const modalSection = document.querySelector('.modal-section');
 const inputs = document.querySelectorAll('#inputBook input');
@@ -62,8 +65,16 @@ const renderBook = (book) => {
     deleteBtn.innerText = "Hapus";
 
     deleteBtn.addEventListener('click', () => {
-        service.removeBook(book.id);
-        refreshDOM();
+        openModal(confirmContainer);
+        yes.addEventListener('click', () => {
+            service.removeBook(book.id);
+            refreshDOM();
+            closeModal(confirmContainer);
+        });
+        
+        no.addEventListener('click', () => {
+            closeModal(confirmContainer);
+        });
     });
 
     cardTitleElement.appendChild(titleElement);
@@ -142,23 +153,29 @@ const handleInput = (event) => {
     console.log(formData);
 }
 
-const openModal = () => {
-    modalSection.setAttribute('style', 'visibility: visible;')
+const openModal = (modalElement) => {
+    modalElement.setAttribute('style', 'visibility: visible;')
 }
 
-const closeModal = () => {
-    modalSection.setAttribute('style', 'visibility: hidden;');
+const closeModal = (modalElement) => {
+    modalElement.setAttribute('style', 'visibility: hidden;');
 }
 
-addBtn.addEventListener('click', () => openModal());
+addBtn.addEventListener('click', () => openModal(modalSection));
 
 modalSection.addEventListener('click', (event) => {
     const modal = document.querySelector('.modal');
     if (!modal.contains(event.target)) {
-        closeModal();
+        closeModal(modalSection);
     }
+});
 
-})
+confirmContainer.addEventListener('click', (event) => {
+    const modal = document.querySelector('.modal');
+    if (!modal.contains(event.target)) {
+        closeModal(confirmContainer);
+    }
+});
 
 inputs.forEach(input => {
     input.addEventListener('input', handleInput);
@@ -168,7 +185,7 @@ submit.addEventListener('click', (event) => {
     event.preventDefault();
     service.saveBook(formData);
     refreshDOM();
-    closeModal();
+    closeModal(modalSection);
 });
 
 search.addEventListener('input', () => {

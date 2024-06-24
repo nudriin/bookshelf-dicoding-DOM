@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nudriin's Book</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="head-bar">
+    <h1 class="">Nudriin</h1>
+  </header>
+  <main class="grids">
+    <section class="search-section">
+      <form id="searchBook" class="search-form">
+        <label for="searchBookTitle">Cari</label>
+        <input id="searchBookTitle" class="search-input" placeholder="Ketikan judul buku disini..." type="text">
+      </form>
+    </section>
+
+    <section class="left-col">
+      <section class="head-section">
+        <div>
+          <div class="grids">
+            <div class="statistic">
+              <h1>Buku</h1>
+              <button class="add">Tambah</button>
+            </div>
+            <div id="countBook" class="col">
+            </div>
+            <div id="incompleteCount" class="col">
+            </div>
+            <div id="completeCount" class="col">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shelf">
+        <div class="grids">
+          <div class="incomplete-container">
+            <h3 class="incomplete-heading">Belum Selesai</h3>
+            <div class="incomplete">
+            </div>
+          </div>
+
+          <div class="complete-container">
+            <h3 class="complete-heading">Selesai</h3>
+            <div class="complete">
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="right-col">
+      <aside>
+        <h3>List Buku</h3>
+        <div class="book-list">
+
+        </div>
+      </aside>
+    </section>
+
+    <section class="modal-section" style="visibility: hidden;">
+      <div class="modal">
+        <h1>Tambah Buku</h1>
+        <p>Mohon masukan data dengan benar</p>
+        <form id="inputBook" class="modal-form">
+          <div class="input">
+            <label for="title">Judul</label>
+            <input id="title" placeholder="Laskar Pelangi" type="text" required>
+          </div>
+          <div class="input">
+            <label for="author">Penulis</label>
+            <input id="author" placeholder="Andrea Hirata" type="text" required>
+          </div>
+          <div class="input">
+            <label for="year">Tahun</label>
+            <input id="year" placeholder="2005" type="number" required>
+          </div>
+          <div class="input-inline">
+            <label for="isComplete">Selesai dibaca</label>
+            <input id="isComplete" type="checkbox">
+          </div>
+          <button id="bookSubmit" type="submit">Tambah buku</span></button>
+      </div>
+    </section>
+  </main>
+  <script src="main.mjs" type="module"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

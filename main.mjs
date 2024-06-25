@@ -147,10 +147,8 @@ const handleInput = (event) => {
     if (type === 'checkbox') {
         formData[id] = checked;
     } else {
-        formData[id] = value;
+        id === 'year' ? formData[id] = Number(value) : formData[id] = value;
     }
-
-    console.log(formData);
 }
 
 const openModal = (modalElement) => {
